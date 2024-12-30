@@ -41,6 +41,8 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile */
+  height: auto; /* Ensure no fixed height limits scrolling */
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
@@ -58,7 +60,6 @@ body {
   font-family: 'Bricolage Grotesque', sans-serif;
   line-height: 1.80857;
   font-weight: normal;
-  overflow-x: hidden;
   text-align: left;
   background-color: #fff; }
 
@@ -4394,7 +4395,9 @@ button.close {
   -webkit-appearance: none; }
 
 .modal-open {
-  overflow: hidden; }
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile */
+
+}
 
 .modal {
   position: fixed;
