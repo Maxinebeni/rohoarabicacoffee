@@ -41,8 +41,8 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  overscroll-behavior: none; /* Prevent bounce back on scroll */
-  scroll-behavior: smooth;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 @-ms-viewport {
@@ -7578,8 +7578,8 @@ h1, h2, h3, h4, h5,
 
 .owl-carousel {
   position: relative;   
-  overflow: visible;
-  overscroll-behavior: none; /* Prevent bounce back on scroll */
+  width: 100%;
+  overflow: hidden; /* Prevent internal scrollbars */
 
 }
   .owl-carousel .owl-item {
@@ -7626,9 +7626,10 @@ h1, h2, h3, h4, h5,
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
-      background-attachment: scroll; /* Ensure scrolling is allowed */
       height: 700px;
       position: relative;
+      width: 100%;
+      box-sizing: border-box; /* Ensure full width calculation */
       pointer-events: auto;
       z-index: 0; }
       @media (max-width: 1199.98px) {
@@ -7652,9 +7653,8 @@ h1, h2, h3, h4, h5,
             height: 50vh;
             overflow-x: auto; /* Allow horizontal scrolling */
             background-size: cover;
-            /* Ensure the image scales properly */
+            scroll-behavior: smooth;    /* Ensure the image scales properly */
           }
-        
           .slider-item .slider-text {
             padding-top: 20px; /* Adjust spacing for content */
           }
