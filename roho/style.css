@@ -41,6 +41,7 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  overflow: auto; /* Allow scrolling */
   -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile */
   height: auto; /* Ensure no fixed height limits scrolling */
   -ms-overflow-style: scrollbar;
@@ -4400,7 +4401,7 @@ button.close {
 }
 
 .modal {
-  position: fixed;
+  position: relative;
   top: 0;
   right: 0;
   bottom: 0;
@@ -7640,7 +7641,17 @@ h1, h2, h3, h4, h5,
       .owl-carousel.home-slider .slider-item .slider-text {
         color: #fff;
         height: 750px;
-        text-align: right; }
+        text-align: right; }@media (max-width: 768px) {
+          .slider-item {
+            height: 50vh; /* Reduce height for mobile view */
+            background-size: cover; /* Ensure the image scales properly */
+          }
+        
+          .slider-item .slider-text {
+            padding-top: 20px; /* Adjust spacing for content */
+          }
+        }
+
         @media (min-width: 992px) {
           .owl-carousel.home-slider .slider-item .slider-text .order-md-last {
             text-align: left !important; } }
