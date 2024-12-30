@@ -41,10 +41,7 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  overflow: auto; /* Allow scrolling */
-  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile */
-  height: auto; /* Ensure no fixed height limits scrolling */
-  -ms-overflow-style: scrollbar;
+  scroll-behavior: smooth;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 @-ms-viewport {
@@ -7579,7 +7576,9 @@ h1, h2, h3, h4, h5,
     letter-spacing: 5px; }
 
 .owl-carousel {
-  position: relative; }
+  position: relative;     
+  overflow: visible; 
+}
   .owl-carousel .owl-item {
     opacity: .4; }
     .owl-carousel .owl-item.active {
@@ -7624,8 +7623,11 @@ h1, h2, h3, h4, h5,
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
-      height: 750px;
+      background-attachment: scroll; /* Ensure scrolling is allowed */
+      min-height: 100vh; /* Full viewport height */
+      height: auto;
       position: relative;
+      pointer-events: auto;
       z-index: 0; }
       @media (max-width: 1199.98px) {
         .owl-carousel.home-slider .slider-item {
@@ -7643,8 +7645,10 @@ h1, h2, h3, h4, h5,
         height: 750px;
         text-align: right; }@media (max-width: 768px) {
           .slider-item {
-            height: 50vh; /* Reduce height for mobile view */
-            background-size: cover; /* Ensure the image scales properly */
+            height: 50vh;
+            overflow-x: auto; /* Allow horizontal scrolling */
+            background-size: cover;
+            /* Ensure the image scales properly */
           }
         
           .slider-item .slider-text {
