@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Roho Coffee</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bricolage Grotesque:400,700|Raleway:400,700,800&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="roho/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="roho/animate.css">
+    
+    <link rel="stylesheet" href="roho/owl.carousel.min.css">
+    <link rel="stylesheet" href="roho/owl.theme.default.min.css">
+    <link rel="stylesheet" href="roho/magnific-popup.css">
+
+    <link rel="stylesheet" href="roho/aos.css">
+
+    <link rel="stylesheet" href="roho/ionicons.min.css">
+
+    <link rel="stylesheet" href="roho/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="roho/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="roho/flaticon.css">
+    <link rel="stylesheet" href="roho/icomoon.css">
+    <link rel="stylesheet" href="roho/style.css">
+  </head>
+  <body>
+   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+       <a href="index.html" class="logo"><img src="images/logo.png"></a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="images/toggle-icon.png" alt="Menu Icon" style="height: 30px;">
+     </button>
+             <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="index.html#coffee" class="nav-link">Our Coffee</a></li>
+            <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+             <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item" href="shop.html">Products</a>
+               <a class="dropdown-item" href="cart.html">Cart</a>
+               <a class="dropdown-item" href="checkout.html">Checkout</a>
+             </div>
+           </li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+        </div>
+       </div>
+    </nav>
+   <!-- END nav -->
+ 
+   <section class="home-slider owl-carousel">
+ 
+     <div class="slider-item" style="background-image: url(images/roho1.png);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+       <div class="container">
+         <div class="row slider-text justify-content-center align-items-center">
+           <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Cart</h1>
+              <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+           </div>
+ 
+         </div>
+       </div>
+     </div>
+   </section>
+
+
+<!-- Cart Section -->
+<section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="cart-list">
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr class="text-center">
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items">
+                            <!-- Cart items will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>Cart Totals</h3>
+                    <p class="d-flex">
+                        <span>Subtotal</span>
+                        <span id="subtotal">RWF 0.00</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Delivery</span>
+                        <span id="delivery-fee">RWF 2000</span>
+                    </p>
+                    <hr>
+                    <p class="d-flex total-price">
+                        <span>Total</span>
+                        <span id="total-price">RWF 0.00</span>
+                    </p>
+                </div>
+                <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+      <!-- copyright section start -->
+      <div class="copyright_section">
+        <div class="container">
+           <p class="copyright_text">Copyright 2024 All Right Reserved. Roho Arabica Coffee</p>
+        </div>
+     </div>
+   
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="roho/js/jquery.min.js"></script>
+  <script src="roho/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="roho/js/popper.min.js"></script>
+  <script src="roho/js/bootstrap.min.js"></script>
+  <script src="roho/js/jquery.easing.1.3.js"></script>
+  <script src="roho/js/jquery.waypoints.min.js"></script>
+  <script src="roho/js/jquery.stellar.min.js"></script>
+  <script src="roho/js/owl.carousel.min.js"></script>
+  <script src="roho/js/jquery.magnific-popup.min.js"></script>
+  <script src="roho/js/aos.js"></script>
+  <script src="roho/js/jquery.animateNumber.min.js"></script>
+  <script src="roho/js/bootstrap-datepicker.js"></script>
+  <script src="roho/js/jquery.timepicker.min.js"></script>
+  <script src="roho/js/scrollax.min.js"></script>
+  <script src="roho/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="roho/js/google-map.js"></script>
+  <script src="roho/js/main.js"></script>
+
+
+  <script>
+    // Function to add product to cart
+    function addToCart() {
+      const size = document.getElementById('size-select').value;
+      const quantity = parseInt(document.getElementById('quantity').value);
+      const price = size === "250g" ? 5000 : (size === "500g" ? 10000 : 12000);
+      const total = (quantity * price).toFixed(2);
+  
+      const cartItem = {
+        size,
+        quantity,
+        price,
+        total
+      };
+  
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      // Check if the item with the same size already exists in the cart
+      const existingItemIndex = cart.findIndex(item => item.size === size);
+      
+      if (existingItemIndex >= 0) {
+        // Update the quantity and total if item already exists
+        cart[existingItemIndex].quantity += quantity;
+        cart[existingItemIndex].total = (cart[existingItemIndex].quantity * cart[existingItemIndex].price).toFixed(2);
+      } else {
+        // Add new item to cart if it does not exist
+        cart.push(cartItem);
+      }
+  
+      localStorage.setItem('cart', JSON.stringify(cart));
+  
+      alert(`${quantity} x ${size} added to cart!`);
+      window.location.href = 'cart.html';
+    }
+  
+    function loadCartItems() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartItemsContainer = document.getElementById('cart-items');
+      let cartHTML = '';
+
+      cart.forEach((item, index) => {
+          cartHTML += `
+              <tr class="text-center">
+                  <td class="product-remove"><a href="#" onclick="removeItem(${index}, event)"><span class="icon-close"></span></a></td>
+                  <td class="image-prod"><div class="img" style="background-image:url(images/1.png);"></div></td>
+                  <td class="product-name">
+                      <h3>Roho Coffee - ${item.size}</h3>
+                  </td>
+                  <td class="price">RWF ${item.price.toFixed(0)}</td>
+                  <td class="quantity">
+                      <div class="input-group mb-3">
+                          <input type="number" name="quantity" class="quantity form-control input-number" 
+                                 value="${item.quantity}" min="1" max="100" 
+                                 onchange="updateQuantity(${index}, this.value)">
+                      </div>
+                  </td>
+                  <td class="total">RWF ${(item.price * item.quantity).toFixed(0)}</td>
+              </tr>`;
+      });
+
+      cartItemsContainer.innerHTML = cartHTML;
+      loadCartTotal();
+  }
+
+  function updateQuantity(index, newQuantity) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const item = cart[index];
+
+      if (item && newQuantity >= 1) {
+          // Update the quantity and total for the item
+          item.quantity = parseInt(newQuantity);
+          item.total = (item.price * item.quantity).toFixed(2);
+
+          // Save updated cart to localStorage
+          localStorage.setItem('cart', JSON.stringify(cart));
+
+          // Reload cart items and totals to reflect changes
+          loadCartItems();
+      }
+  }
+
+  function removeItem(index, event) {
+      event.preventDefault();
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCartItems();
+  }
+
+  function loadCartTotal() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let subtotal = 0;
+
+      cart.forEach(item => {
+          subtotal += item.price * item.quantity;
+      });
+
+      const deliveryFee = 2000;
+      const total = subtotal + deliveryFee;
+
+      document.getElementById('subtotal').textContent = `RWF ${subtotal.toFixed(0)}`;
+      document.getElementById('total-price').textContent = `RWF ${total.toFixed(0)}`;
+  }
+
+  // Initialize cart items and totals when the page loads
+  window.onload = function () {
+      loadCartItems();
+  };
+</script>
+
+  
+
+
+
+
+    
+    
+  </body>
+</html>
