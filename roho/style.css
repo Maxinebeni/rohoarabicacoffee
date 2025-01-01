@@ -7334,7 +7334,7 @@ body {
     width: 100%; }
 
 span {
-  color: #242424; }
+  color: #000000; }
 
 a {
   -webkit-transition: .3s all ease;
@@ -7828,7 +7828,7 @@ h1, h2, h3, h4, h5,
   
   @media (max-width: 991.98px) {
     .home-header {
-      height: 70vh;
+      height: 50vh;
       background-size: cover;
     }
   
@@ -7838,10 +7838,17 @@ h1, h2, h3, h4, h5,
   }
   
   @media (max-width: 767.98px) {
+
+    .home-header {
+      height: 92vh;
+      background-size: cover;
+    }
+
     .home-header .header-text {
       padding-top: 20px;
       text-align: center;
     }
+
   }
   
 
