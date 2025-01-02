@@ -311,13 +311,14 @@
         const phoneNumber = '+250794415448'; // Replace with the target WhatsApp number
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-        // Show alert before redirect
-        alert('You will now be redirected to WhatsApp to send your order.');
+        // Use confirm instead of alert to trigger redirection
+        const userConfirmed = confirm('You will now be redirected to WhatsApp to send your order. Do you want to continue?');
 
-        // Redirect to WhatsApp
-        setTimeout(() => window.open(whatsappUrl, '_blank'), 500);
+        if (userConfirmed) {
+            // Redirect to WhatsApp
+            window.open(whatsappUrl, '_blank');
+        }
     }
-
     // Initialize session and load data when the page loads
     window.onload = function () {
         initializeSession();
