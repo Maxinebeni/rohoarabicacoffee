@@ -7841,7 +7841,7 @@ h1, h2, h3, h4, h5,
 
     .home-header {
       height: 92vh;
-      background-size: fit;
+      background-size: cover;
       background-attachment: scroll; /* Disables fixed background for better performance on mobile */
 
     }
