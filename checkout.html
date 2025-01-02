@@ -248,7 +248,7 @@
         orderSummaryElement.innerHTML = ''; // Clear any existing content
 
         cart.forEach(item => {
-            subtotal += item.price * item.quantity;
+            subtotal += parseFloat(item.price) * parseInt(item.quantity, 10);
 
             // Add each product to the summary
             const productElement = document.createElement('p');
@@ -289,7 +289,7 @@
         let orderSummary = '';
 
         cart.forEach(item => {
-            subtotal += item.price * item.quantity;
+            subtotal += parseFloat(item.price) * parseInt(item.quantity, 10);
             orderSummary += `- Roho Coffee (${item.size}) x${item.quantity}: RWF ${(item.price * item.quantity).toFixed(0)}\n`;
         });
 
@@ -311,7 +311,6 @@
         const phoneNumber = '+250794415448'; // Replace with the target WhatsApp number
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-        // Use confirm instead of alert to trigger redirection
         const userConfirmed = confirm('You will now be redirected to WhatsApp to send your order. Do you want to continue?');
 
         if (userConfirmed) {
@@ -319,6 +318,7 @@
             window.open(whatsappUrl, '_blank');
         }
     }
+
     // Initialize session and load data when the page loads
     window.onload = function () {
         initializeSession();
