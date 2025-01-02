@@ -7842,6 +7842,8 @@ h1, h2, h3, h4, h5,
     .home-header {
       height: 92vh;
       background-size: cover;
+      background-attachment: fixed; /* Keeps the background stationary */
+
     }
 
     .home-header .header-text {
