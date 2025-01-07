@@ -80,7 +80,7 @@
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate">
                 <h3>Roho Coffee - 500g</h3>
-                <p class="price"><span>RWF 10000</span></p>
+                <p class="price"><span>RWF 9000</span></p>
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="form-group d-flex">
@@ -180,7 +180,7 @@
     function addToCart() {
       const size = document.getElementById('size-select').value;
       const quantity = parseInt(document.getElementById('quantity').value);
-      const price = size === "250g" ? 4000 : (size === "500g" ? 10000 : 12000);
+      const price = size === "250g" ? 5000 : (size === "500g" ? 9000 : 13000);
       const total = (quantity * price).toFixed(2);
   
       const cart = JSON.parse(localStorage.getItem('cart')) || [];

@@ -216,106 +216,121 @@
         const currentSession = sessionStorage.getItem(sessionKey);
 
         if (!currentSession) {
-            // New session detected; clear relevant data from localStorage
-            localStorage.removeItem('billingDetails');
-            localStorage.removeItem('cart');
+            // Clear session-specific data only on new session detection
             sessionStorage.setItem(sessionKey, Date.now());
         }
     }
 
-    // Load Billing Details from localStorage
+    // Function to load billing details
     function loadBillingDetails() {
-        const billingDetails = JSON.parse(localStorage.getItem('billingDetails')) || {};
+        try {
+            const billingDetails = JSON.parse(localStorage.getItem('billingDetails')) || {};
 
-        document.getElementById('firstname').value = billingDetails.firstname || '';
-        document.getElementById('lastname').value = billingDetails.lastname || '';
-        document.getElementById('country').value = billingDetails.country || '';
-        document.getElementById('streetaddress').value = billingDetails.streetaddress || '';
-        document.getElementById('towncity').value = billingDetails.towncity || '';
-        document.getElementById('postcodezip').value = billingDetails.postcodezip || '';
-        document.getElementById('phone').value = billingDetails.phone || '';
-        document.getElementById('emailaddress').value = billingDetails.emailaddress || '';
+            document.getElementById('firstname').value = billingDetails.firstname || '';
+            document.getElementById('lastname').value = billingDetails.lastname || '';
+            document.getElementById('country').value = billingDetails.country || '';
+            document.getElementById('streetaddress').value = billingDetails.streetaddress || '';
+            document.getElementById('towncity').value = billingDetails.towncity || '';
+            document.getElementById('postcodezip').value = billingDetails.postcodezip || '';
+            document.getElementById('phone').value = billingDetails.phone || '';
+            document.getElementById('emailaddress').value = billingDetails.emailaddress || '';
+        } catch (error) {
+            console.error('Error loading billing details:', error);
+        }
     }
 
-    // Load Cart Total and Order Summary from localStorage
+    // Function to load cart total and order summary
     function loadCartTotal() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let subtotal = 0;
-        const deliveryFee = 2000; // Fixed delivery fee
+        try {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let subtotal = 0;
+            const deliveryFee = 2000; // Fixed delivery fee
 
-        // Build order summary
-        const orderSummaryElement = document.getElementById('order-summary');
-        orderSummaryElement.innerHTML = ''; // Clear any existing content
+            // Build order summary
+            const orderSummaryElement = document.getElementById('order-summary');
+            orderSummaryElement.innerHTML = ''; // Clear any existing content
 
-        cart.forEach(item => {
-            subtotal += parseFloat(item.price) * parseInt(item.quantity, 10);
+            if (cart.length === 0) {
+                orderSummaryElement.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                cart.forEach(item => {
+                    subtotal += parseFloat(item.price) * parseInt(item.quantity, 10);
 
-            // Add each product to the summary
-            const productElement = document.createElement('p');
-            productElement.className = 'd-flex';
-            productElement.innerHTML = `<p>Roho Coffee - ${item.size} (x${item.quantity})</p> <span>RWF ${(item.price * item.quantity).toFixed(0)}</span>`;
-            orderSummaryElement.appendChild(productElement);
-        });
+                    // Add each product to the summary
+                    const productElement = document.createElement('p');
+                    productElement.className = 'd-flex';
+                    productElement.innerHTML = `<p>Roho Coffee - ${item.size} (x${item.quantity})</p> <span>RWF ${(item.price * item.quantity).toFixed(0)}</span>`;
+                    orderSummaryElement.appendChild(productElement);
+                });
+            }
 
-        const total = subtotal + deliveryFee;
+            const total = subtotal + deliveryFee;
 
-        // Update the UI with the calculated values
-        document.getElementById('cart-subtotal').textContent = `RWF ${subtotal.toFixed(0)}`;
-        document.getElementById('delivery-fee').textContent = `RWF ${deliveryFee.toFixed(0)}`;
-        document.getElementById('cart-total').textContent = `RWF ${total.toFixed(0)}`;
+            // Update the UI with the calculated values
+            document.getElementById('cart-subtotal').textContent = `RWF ${subtotal.toFixed(0)}`;
+            document.getElementById('delivery-fee').textContent = `RWF ${deliveryFee.toFixed(0)}`;
+            document.getElementById('cart-total').textContent = `RWF ${total.toFixed(0)}`;
+        } catch (error) {
+            console.error('Error loading cart total:', error);
+            document.getElementById('order-summary').innerHTML = '<p>Unable to load cart items.</p>';
+        }
     }
 
-    // Place Order and Redirect to WhatsApp
+    // Function to place the order and redirect to WhatsApp
     function placeOrder() {
-        // Get billing details
-        const billingDetails = {
-            firstname: document.getElementById('firstname').value,
-            lastname: document.getElementById('lastname').value,
-            country: document.getElementById('country').value,
-            streetaddress: document.getElementById('streetaddress').value,
-            towncity: document.getElementById('towncity').value,
-            postcodezip: document.getElementById('postcodezip').value,
-            phone: document.getElementById('phone').value,
-            emailaddress: document.getElementById('emailaddress').value,
-        };
+        try {
+            const billingDetails = {
+                firstname: document.getElementById('firstname').value,
+                lastname: document.getElementById('lastname').value,
+                country: document.getElementById('country').value,
+                streetaddress: document.getElementById('streetaddress').value,
+                towncity: document.getElementById('towncity').value,
+                postcodezip: document.getElementById('postcodezip').value,
+                phone: document.getElementById('phone').value,
+                emailaddress: document.getElementById('emailaddress').value,
+            };
 
-        // Save billing details to localStorage
-        localStorage.setItem('billingDetails', JSON.stringify(billingDetails));
+            // Save billing details to localStorage
+            localStorage.setItem('billingDetails', JSON.stringify(billingDetails));
 
-        // Get cart details
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let subtotal = 0;
-        const deliveryFee = 2000;
-        let orderSummary = '';
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items before placing an order.');
+                return;
+            }
 
-        cart.forEach(item => {
-            subtotal += parseFloat(item.price) * parseInt(item.quantity, 10);
-            orderSummary += `- Roho Coffee (${item.size}) x${item.quantity}: RWF ${(item.price * item.quantity).toFixed(0)}\n`;
-        });
+            let subtotal = 0;
+            const deliveryFee = 2000;
+            let orderSummary = '';
 
-        const total = subtotal + deliveryFee;
+            cart.forEach(item => {
+                subtotal += parseFloat(item.price) * parseInt(item.quantity, 10);
+                orderSummary += `- Roho Coffee (${item.size}) x${item.quantity}: RWF ${(item.price * item.quantity).toFixed(0)}\n`;
+            });
 
-        // Build the WhatsApp message
-        const message = `Order Details:\n\n` +
-            `Billing Information:\n` +
-            `Name: ${billingDetails.firstname} ${billingDetails.lastname}\n` +
-            `Address: ${billingDetails.streetaddress}, ${billingDetails.towncity}, ${billingDetails.country}, ${billingDetails.postcodezip}\n` +
-            `Phone: ${billingDetails.phone}\n` +
-            `Email: ${billingDetails.emailaddress}\n\n` +
-            `Order Summary:\n${orderSummary}` +
-            `Subtotal: RWF ${subtotal.toFixed(0)}\n` +
-            `Delivery Fee: RWF ${deliveryFee}\n` +
-            `Total: RWF ${total.toFixed(0)}\n\n`;
+            const total = subtotal + deliveryFee;
 
-        // WhatsApp redirect (replace `+250XXXXXXXXX` with the desired phone number)
-        const phoneNumber = '+250794415448'; // Replace with the target WhatsApp number
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            const message = `Order Details:\n\n` +
+                `Billing Information:\n` +
+                `Name: ${billingDetails.firstname} ${billingDetails.lastname}\n` +
+                `Address: ${billingDetails.streetaddress}, ${billingDetails.towncity}, ${billingDetails.country}, ${billingDetails.postcodezip}\n` +
+                `Phone: ${billingDetails.phone}\n` +
+                `Email: ${billingDetails.emailaddress}\n\n` +
+                `Order Summary:\n${orderSummary}` +
+                `Subtotal: RWF ${subtotal.toFixed(0)}\n` +
+                `Delivery Fee: RWF ${deliveryFee}\n` +
+                `Total: RWF ${total.toFixed(0)}\n\n`;
 
-        const userConfirmed = confirm('You will now be redirected to WhatsApp to send your order. Do you want to continue?');
+            const phoneNumber = '+250794415448';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-        if (userConfirmed) {
-            // Redirect to WhatsApp
-            window.open(whatsappUrl, '_blank');
+            const userConfirmed = confirm('You will now be redirected to WhatsApp to send your order. Do you want to continue?');
+            if (userConfirmed) {
+                window.open(whatsappUrl, '_blank');
+            }
+        } catch (error) {
+            console.error('Error placing order:', error);
+            alert('An error occurred while placing your order. Please try again.');
         }
     }
 
